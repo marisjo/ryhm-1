@@ -1,0 +1,13 @@
+Esimese koduse tööna on vaja luua kodust ligipääs serverisse greeny, alla laadida tunnis loodud minimalistlik vebeileht, seda muuta, muudetud fail tagasi serverisse laadida ja seejärel veenduda veebibrauseris, et muudatused on nähtavad.
+
+1) vaja SCP programmiga (failitransport) ühendus serveriga greeny.cs.tlu.ee. selleks on aga ülikoolist väljaspool kasutada tunnelit läbi serveri lin2.tlu.ee (WinSCP programmis host: greeny.cs.tlu.ee, Advanced nupu klõpsamisel dialoogiaknas valik Tunnel ja seal "connect through SSH tunnel", mille host on lin2.tlu.ee).
+
+2) Oma kodukataloogist liikuda public_html kausta, sealt alla laadida oma tunnis loodud html fail.
+
+3) Muuta seda HTML faili, lisada mõni lõik ( element <p> ) või mistahes teine element. Soovian vaadata HTML võimalusi W3schools lehelt (https://www.w3schools.com/html/default.asp)
+
+4) muudetud fail laadida uuesti serverisse
+
+5) seadistada SSH tunnel läbi ülikooli veebipuhvri (selleks juhised näiteks ülikooli kodulehel infotehnoloogia osakonna alamlehel.
+
+6) vaadata oma muudetud lehte aadressil greeny.cs.tlu.ee/~teiegreenykasutaja
