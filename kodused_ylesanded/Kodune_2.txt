@@ -1,0 +1,23 @@
+Käes on teine kodune ülesanne. Seekordne eesmärk on endiselt tööriistade kasutamist harjutada aga ka juba natuke PHP keeles programmeerimisega algust teha.
+
+Tunnis sai loodud leht, millel võtsime kasutusele muutuja $hourNow ja andsime sellele väärtuseks lehe avamise hetkel kellaaja tundide osa väärtuse.
+
+Oleme loonud if-lause, milles kontrollisime, kas kell on ehk vähem kui 8 ($hourNow < 8) ja määrasime sellisel juhul teise muutuja $partOfDay väärtuse.
+
+Lisage if-laused päeva erinevate osade kontrollimiseks.
+Kasutada saate järgmiseid võrdlemise operaatoreid (märke):
+<   väiksem
+>   suurem
+<=  väiksem või võrdne
+>=  suurem või võrdne
+==  võrdne
+
+Kui soovite kahte või isegi enamat tingimust korraga kasutada (näiteks suurem kui üks väärtus aga väiksem kui teine), siis saate kasutada kahe tingimse vahel operaatoreid
+and
+or
+
+Palun lisada vähemalt kolm erinevat if-lauset.
+
+Kes soovib, võib püüda ka minutite väärtust kasutada (lisaks tundidele)!
+
+Tunnis näeme!
