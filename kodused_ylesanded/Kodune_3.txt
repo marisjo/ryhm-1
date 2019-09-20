@@ -1,0 +1,12 @@
+Kolmas kodune töö sisaldab juba ikka natuke programmeerimise moodi ülesandeid.
+
+1) Tunni lõpus tekitasime uue faili "header.php".
+Muutke faili sisu, mis praegu on sisuliselt puhas HTML, et see oleks php, mis koostab ühe muutuja väärtusena HTML koodi ning väljastab selle echo käsuga.
+
+2) Looge massiivid Eesti keelsete nädalapäevade ning kuude nimedega (näiteks: $weekDaysET = ["esmaspäev", "teisipäev", ...])
+Muudke teadet, mis oli aeg lehe avamise hetkel nii, et kuu väljastataks eesti keelse nimega (kasutades loodud massiivi) ning väljastataks ka nädalapäev.
+Kuidas küsida erinevat aja infot näeb näiteks: https://www.php.net/manual/en/function.date.php
+
+NB! Ma tean, et seda tunni lõpus ei öelnud aga sellegipoolest, püüdke palun ära teha!
+
+3) Lisage semestri kulgemise osale ka korrektsed teated juhuks, kui semester pole veel alanud või semester on läbi saanud (semestri algusest möödunud päevade arv on negatiivne või suurem kui semestri pikkus). Mõlemal juhul pole <meter> elemendil mõtet, näidake lihtsalt teadet, et ...
