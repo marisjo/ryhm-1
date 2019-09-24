@@ -4,6 +4,13 @@
   $photoDir = "../photos/";
   $photoTypes = ["image/jpeg", "image/png"];
   
+  $weekdayNamesET = ["esmaspäev", "teisipäev", "kolmapäev", "neljapäev", "reede", "laupäev", "pühapäev"];
+  $monthNamesET = ["jaanuar", "veebruar", "märts", "aprill", "mai", "juuni", "juuli", "august", "september", "oktoober", "november", "detsember"];
+  $weekdayNow = date("N");
+  $dateNow = date("d");
+  $monthNow = date("m");
+  $yearNow = date("Y");
+  $timeNow = date("H:i:s");
   $fullTimeNow = date("d.m.Y H:i:s");
   $hourNow = date("H");
   $partOfDay = "hägune aeg";
@@ -33,12 +40,18 @@
     //<meter min="0" max="112" value="16">13%</meter>
     //</p>
 	$semesterInfoHTML = null;
-	if($semesterElapsed -> format("%r%a") >= 0){
+	if($semesterElapsed -> format("%r%a") >= 0 and $semesterElapsed -> format("%r%a") <= $semesterDuration -> format("%r%a")){
       $semesterInfoHTML = "<p>Semester on täies hoos:";
 	  $semesterInfoHTML .= '<meter min="0" max="' .$semesterDuration -> format("%r%a") .'" ';
 	  $semesterInfoHTML .= 'value="' .$semesterElapsed -> format("%r%a") .'">';
 	  $semesterInfoHTML .= round($semesterElapsed -> format("%r%a") / $semesterDuration -> format("%r%a") * 100, 1) ."%";
 	  $semesterInfoHTML .= "</meter> </p>";
+	}
+	if($semesterElapsed -> format("%r%a") < 0){
+		$semesterInfoHTML = "<p>Semester pole veel alanud.</p>";
+	}
+	if($semesterElapsed -> format("%r%a") > $semesterDuration -> format("%r%a")){
+		$semesterInfoHTML = "<p>Semester on lõppenud.</p>";
 	}
 	
 	//foto näitamine lehel
@@ -73,7 +86,8 @@
   ?>  
   <hr>
   <?php
-    echo "<p>Lehe avamise hetkel oli aeg: " .$fullTimeNow .", " .$partOfDay .".</p>";
+    //echo "<p>Lehe avamise hetkel oli aeg: " .$fullTimeNow .", " .$partOfDay .".</p>";
+	echo "<p>Lehe avamise hetkel oli aeg: " .$weekdayNamesET[$weekdayNow - 1] .", " .$dateNow .". " .$monthNamesET[$monthNow - 1] ." " .$yearNow ." kell " .$timeNow ."</p>";
 	echo $randomImgHTML;
   ?>
   

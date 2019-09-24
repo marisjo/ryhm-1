@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="et">
-<head>
-  <meta charset="utf-8">
-  <title>
-  <?php
-    echo $userName;
-  ?>
-   programmeerib veebi</title>
-
-</head>
-<body>
+<?php
+  $pageHeaderHTML = "<!DOCTYPE html> \n";
+  $pageHeaderHTML .= '<html lang="et">'. "\n";
+  $pageHeaderHTML .= "<head> \n";
+  $pageHeaderHTML .=  "\t" .'<meta charset="utf-8">' ."\n \t<title>" .$userName ."progeb veebi</title> \n";
+  $pageHeaderHTML .= "</head> \n";
+  $pageHeaderHTML .= "<body>";
+  echo $pageHeaderHTML;
