@@ -6,6 +6,8 @@
   $database = "if19_inga_pe_4";
    
   $filmInfoHTML = readAllFilms();
+  $filmAge = 50;
+  $oldFilmInfoHTML = readOldFilms($filmAge);
   
   require("header.php");
   echo "<h1>" .$userName .", veebiprogrammeerimine</h1>";
@@ -16,6 +18,9 @@
   <p>Praegu meie andmebaasis on järgmised filmid:</p>
   <?php
     echo $filmInfoHTML;
+	echo "<hr>";
+	echo "<h2>Filmid, mis on vanemad, kui " .$filmAge ." aastat.</h2>";
+	echo $oldFilmInfoHTML;
   ?>
   
 </body>
