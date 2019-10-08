@@ -192,6 +192,7 @@
 	  <input name="submitUserData" type="submit" value="Loo kasutaja"><span><?php echo $notice; ?></span>
 	</form>
 	<hr>
+	<p>Tagasi <a href="page.php">avalehele</a>!</p>
 		
   </body>
 </html>

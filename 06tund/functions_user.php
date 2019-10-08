@@ -1,4 +1,9 @@
 <?php
+
+//Võtan kasutusele sessiooni
+session_start();
+//var_dump($_SESSION);
+
 function signUp($name, $surname, $email, $gender, $birthDate, $password){
 	$notice = null;
 	$conn = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
@@ -31,13 +36,26 @@ function signUp($name, $surname, $email, $gender, $birthDate, $password){
 		if(password_verify($password, $passwordFromDb)){
 		  //kui salasõna klapib
 		  $stmt->close();
-		  $stmt = $mysqli->prepare("SELECT firstname, lastname FROM vpusers1 WHERE email=?");
+		  $stmt = $mysqli->prepare("SELECT id, firstname, lastname FROM vpusers1 WHERE email=?");
 		  echo $mysqli->error;
 		  $stmt->bind_param("s", $email);
-		  $stmt->bind_result($firstnameFromDb, $lastnameFromDb);
+		  $stmt->bind_result($idFromDb, $firstnameFromDb, $lastnameFromDb);
 		  $stmt->execute();
 		  $stmt->fetch();
 		  $notice = "Sisse logis " .$firstnameFromDb ." " .$lastnameFromDb ."!";
+		  
+		  //annan sessioonimuutujatele väärtused
+		  $_SESSION["userId"] = $idFromDb;
+		  $_SESSION["userFirstname"] = $firstnameFromDb;
+		  $_SESSION["userLastname"] = $lastnameFromDb;
+		  
+		  //kuna siirdume teisele lehele, sulgeme andmebaasi ühendused
+		  $stmt->close();
+	      $mysqli->close();
+		  //siirdume teisele lehele
+		  header("Location: home.php");
+		  //katkestame edasise tegevuse siin
+		  exit();
 		  		  
 		} else {
 		  $notice = "Vale salasõna!";

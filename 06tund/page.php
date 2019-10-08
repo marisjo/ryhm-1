@@ -4,7 +4,7 @@
   require("functions_user.php");
   $database = "if19_rinde_vp";
   $userName = "Sisselogimata kasutaja";
-  
+   
   $notice = "";
   $email = "";
   $emailError = "";
@@ -128,6 +128,8 @@
 	  <input name="login" type="submit" value="Logi sisse">&nbsp;<span><?php echo $notice; ?>
 	</form>
 	<br>
+	<h2>Kui pole kasutajakontot</h2>
+	<p>Loo <a href="newuser.php">kasutajakonto</a>!</p>
   
   <?php
 	echo $randomImgHTML;
