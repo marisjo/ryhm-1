@@ -20,7 +20,7 @@ function signUp($name, $surname, $email, $gender, $birthDate, $password){
   function signIn($email, $password){
 	$notice = "";
 	$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
-	$stmt = $mysqli->prepare("SELECT password FROM vpusers3 WHERE email=?");
+	$stmt = $mysqli->prepare("SELECT password FROM vpusers1 WHERE email=?");
 	echo $mysqli->error;
 	$stmt->bind_param("s", $email);
 	$stmt->bind_result($passwordFromDb);
@@ -31,7 +31,7 @@ function signUp($name, $surname, $email, $gender, $birthDate, $password){
 		if(password_verify($password, $passwordFromDb)){
 		  //kui salasõna klapib
 		  $stmt->close();
-		  $stmt = $mysqli->prepare("SELECT firstname, lastname FROM vpusers3 WHERE email=?");
+		  $stmt = $mysqli->prepare("SELECT firstname, lastname FROM vpusers1 WHERE email=?");
 		  echo $mysqli->error;
 		  $stmt->bind_param("s", $email);
 		  $stmt->bind_result($firstnameFromDb, $lastnameFromDb);
