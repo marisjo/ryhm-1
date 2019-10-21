@@ -1,0 +1,11 @@
+Seitsmes kodune töö on pikema tähtajaga sest jääb iseseisva töö (õppetöö vaba) ehk vahenädala ajaks.
+
+1) Lisage profiili lehele ka salasõna (parooli vahetamise võimalus).
+Selleks siis üks uus vorm (<form>), milles põhimõtteliselt kolm password tüüpi <input> elementi (kehtiv salasõna, uus salasõna ja uus teist korda veel) ja nupp (submit tüüpi). Kindlasti tuleb kasutada profiili loomise/muutmise vormi elementidega võrreldes täiesti erinevad nimesid!!!
+Kui salasõna muutmise nuppu on klikitud, siis tuleb kontrollida, kas sisestati kehtiv salasõna (selle kontroll nagu sisselogimisel), kas sisestati vähemalt 8 tähte salasõna ja teist korda samasugune (kontroll nagu kasutaja loomisel). Kui kõik klapib, siis tuleb kasutaja salasõna vahetada (SQL UPDATE käsk, seejuures tuleb salasõna krüpteerida sama moodi nagu kasutaja loomisel)!
+
+2) Luua leht, mis on nagu profiili ja sõnumite leht vaid sisselogitud kasutajatele. Sellel lehel peab saama näha andmebaaside projekteerimise kursuse filmide andmebaasi (seal vist lausa 4 erinevat tabelit) filme (kasutage selles tunnis tehtud SQL päringuid.
+Filme peab saama ka lisada! Selleks oleks ilmselt hea lisada veel üks tabel, kus seote filmi id ja omasisseloginud kasutaja (kes filmi lisab) id ehk siis userid. Seejuures võiks andmebaasi käsitsi seni olemasolevate filmide jaoks lisadaenda kasutaja id (enamusel ilmselt 1).
+
+Tehke koostööd!
+Küsige nõu!
