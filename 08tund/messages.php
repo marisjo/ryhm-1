@@ -2,6 +2,7 @@
   require("../../../../../config_vp2019.php");
   require("functions_main.php");
   require("functions_user.php");
+  require("functions_message.php");
   $database = "if19_rinde_vp";
   
   //kui pole sisseloginud
@@ -21,21 +22,19 @@
   $userName = $_SESSION["userFirstname"] ." " .$_SESSION["userLastname"];
   
   $notice = null;
-  $myDescription = null;
+  $myMessage = null;
   
-  if(isset($_POST["submitProfile"])){
-	$notice = storeUserProfile($_POST["description"], $_POST["bgcolor"], $_POST["txtcolor"]);
-	if(!empty($_POST["description"])){
-	  $myDescription = $_POST["description"];
+  if(isset($_POST["submitMessage"])){
+    $myMessage = test_input($_POST["message"]);
+	if(!empty($myMessage)){
+		$notice = storeMessage($myMessage);
+	} else {
+		$notice = "Tühja sõnumit ei salvestata!";
 	}
-	$_SESSION["bgColor"] = $_POST["bgcolor"];
-	$_SESSION["txtColor"] = $_POST["txtcolor"];
-  } else {
-	$myProfileDesc = showMyDesc();
-	if($myProfileDesc != ""){
-	  $myDescription = $myProfileDesc;
-    }
   }
+  
+  //$messagesHTML = readAllMessages();
+  $messagesHTML = readMyMessages();
   
   require("header.php");
 ?>
@@ -49,13 +48,16 @@
   <p><a href="?logout=1">Logi välja!</a> | Tagasi <a href="home.php">avalehele</a></p>
   
   <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-	  <label>Minu kirjeldus</label><br>
-	  <textarea rows="10" cols="80" name="description" placeholder="Lisa siia oma tutvustus ..."><?php echo $myDescription; ?></textarea>
+	  <label>Minu sõnum (256 märki)</label><br>
+	  <textarea rows="5" cols="51" name="message" placeholder="Kirjuta siia oma sõnum ..."></textarea>
 	  <br>
-	  <label>Minu valitud taustavärv: </label><input name="bgcolor" type="color" value="<?php echo $_SESSION["bgColor"]; ?>"><br>
-	  <label>Minu valitud tekstivärv: </label><input name="txtcolor" type="color" value="<?php echo $_SESSION["txtColor"]; ?>"><br>
-	  <input name="submitProfile" type="submit" value="Salvesta profiil"><span><?php echo $notice; ?></span>
+	  <input name="submitMessage" type="submit" value="Salvesta sõnum"><span><?php echo $notice; ?></span>
 	</form>
+	<hr>
+	<h2>Senised sõnumid</h2>
+	<?php
+	  echo $messagesHTML;
+	?>
   
 </body>
 </html>

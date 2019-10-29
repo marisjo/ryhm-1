@@ -29,6 +29,8 @@
   <ul>
     <li><a href="userprofile.php">Kasutajaprofiil</a></li>
 	<li><a href="messages.php">Sõnumid</a></li>
+	<li><a href="showfilminfo.php">Filmid</a></li>
+	<li><a href="picupload.php">Piltide üleslaadimine</a></li>
   </ul>
   
 </body>

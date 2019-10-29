@@ -7,3 +7,6 @@ CREATE TABLE `if19_rinde_vp`.`vpuserprofiles1` ( `id` INT(11) NOT NULL AUTO_INCR
 
 Sõnumid kõigile
 CREATE TABLE `if19_rinde_vp`.`vpmsg1` ( `id` INT(11) NOT NULL AUTO_INCREMENT , `userid` INT(11) NOT NULL , `message` VARCHAR(256) NOT NULL , `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , `deleted` DATE NULL , `deletedby` INT(11) NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+Üles laetud piltide tabel
+CREATE TABLE `if19_rinde_vp`.`vpphotos1` ( `id` INT(11) NOT NULL AUTO_INCREMENT , `userid` INT(11) NOT NULL , `filename` VARCHAR(40) NOT NULL , `created` DATE NOT NULL DEFAULT CURRENT_TIMESTAMP , `alttext` VARCHAR(256) NULL , `privacy` INT(1) NOT NULL , `deleted` DATE NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
