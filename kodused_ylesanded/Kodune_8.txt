@@ -1,0 +1,6 @@
+Seekord palun eelkõige pingutada, et saaks tehtud eelmine, 7-s ülesanne!
+
+Kel rohkem jaksu, lisab piltide üleslaadimise osale teksti sisestuse, kuhu kirjutada pildi kirjeldus (HTML-i jaoks alt atribuudi väärtuseks) ja raadionuppudega (nagu uue kasutaja lisamisel soo valimine) pildi privaatsustase: 1 - avalik, 2 - sisseloginud kasutajatele, 3 - privaatne.
+Lisage pildi info salvestamine andmebaasi (tunnis jagasin vpphotos tabeli tegemise SQL käsku.
+Salvestada on vaja pildi failinimi, tekstiline kirjeldus ja privaatsus.
+
