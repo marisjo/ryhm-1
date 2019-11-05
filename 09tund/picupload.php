@@ -3,6 +3,8 @@
   require("functions_main.php");
   require("functions_user.php");
   require("functions_pic.php");
+  //require("classes/Test.class.php");
+  require("classes/Picupload.class.php");
   $database = "if19_rinde_vp";
   
   //kui pole sisseloginud
@@ -18,6 +20,12 @@
 	  header("Location: page.php");
 	  exit();
   }
+  
+  //$myTest = new Test(20);
+  //echo $myTest->privateNumber;
+  //echo $myTest->tellPublicSecret();
+  //unset($myTest);
+  //echo $myTest->tellPublicSecret();
   
   $userName = $_SESSION["userFirstname"] ." " .$_SESSION["userLastname"];
   
@@ -74,61 +82,16 @@
 		// if everything is ok, try to upload file
 		} else {
 			
+			//kasutame klassi
+			$myPic = new Picupload($_FILES["fileToUpload"]["tmp_name"], $imageFileType);
 			//teeme pildi väiksemaks
-			//loeme pildifaili sisu pikslikogumiks ehk "pildiobjektiks"
-			if($imageFileType == "jpg" or $imageFileType == "jpeg"){
-				$myTempImage = imagecreatefromjpeg($_FILES["fileToUpload"]["tmp_name"]);
-			}
-			if($imageFileType == "png"){
-				$myTempImage = imagecreatefrompng($_FILES["fileToUpload"]["tmp_name"]);
-			}
-			if($imageFileType == "gif"){
-				$myTempImage = imagecreatefromgif($_FILES["fileToUpload"]["tmp_name"]);
-			}
-			
-			$imageW = imagesx($myTempImage);
-			$imageH = imagesy($myTempImage);
-			
-			if($imageW > $maxPicW or $imageH > $maxPicH){
-				if($imageW / $maxPicW > $imageH / $maxPicH){
-					$picSizeRatio = $imageW / $maxPicW;
-				} else {
-					$picSizeRatio = $imageH / $maxPicH;
-				}
-				$imageNewW = round($imageW / $picSizeRatio, 0);
-				$imageNewH = round($imageH / $picSizeRatio, 0);
-				$myNewImage = setPicSize($myTempImage, $imageW, $imageH, $imageNewW, $imageNewH);
-				//kirjutame vähendatud pildi faili
-				if($imageFileType == "jpg" or $imageFileType == "jpeg"){
-					if(imagejpeg($myNewImage, $pic_upload_dir_w600 .$filename, 90)){
-						$notice = "Vähendatud faili salvestamine õnnestus!";
-					} else {
-						$notice = "Vähendatud faili salvestamine ei õnnestunud!";
-					}
-					
-				}
-				if($imageFileType == "png"){
-					if(imagepng($myNewImage, $pic_upload_dir_w600 .$filename, 6)){
-						$notice = "Vähendatud faili salvestamine õnnestus!";
-					} else {
-						$notice = "Vähendatud faili salvestamine ei õnnestunud!";
-					}
-					
-				}
-				if($imageFileType == "gif"){
-					if(imagegif($myNewImage, $pic_upload_dir_w600 .$filename)){
-						$notice = "Vähendatud faili salvestamine õnnestus!";
-					} else {
-						$notice = "Vähendatud faili salvestamine ei õnnestunud!";
-					}
-					
-				}
+			$myPic->resizeImage($maxPicW, $maxPicH);
+			//lisame vesimärgi
+			$myPic->addWatermark("../vp_pics/vp_logo_w100_overlay.png");
+			//kirjutame vähendatud pildi faili
+			$notice .= $myPic->savePicFile($pic_upload_dir_w600 .$filename);
+			unset($myPic);
 				
-				imagedestroy($myTempImage);
-				imagedestroy($myNewImage);
-				
-			}//kas on liiga suur lõppeb
-						
 			if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
 				echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
 			} else {
