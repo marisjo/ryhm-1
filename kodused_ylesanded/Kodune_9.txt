@@ -1,0 +1,15 @@
+Tunnis lõime klassi piltide üleslaadimiseks.
+
+Täiendage klassi:
+* Lisage klassile funktsioon originaalfaili salvestamiseks (see osa on praegu meie picupload.php failis).
+* Lisage klassile pildi sobivuse kontroll - kas on pilt, kas on sobiv vorming, kas on sobivsuurus. See funktsioon peaks tagastama praeguse uploadOk moodi tulemuse 1 või siis näiteks veateate. Ilmselt on sellele kontrollivale funktsioonile mõistlik saata sobiv piirsuurus (et oleks universaalne).
+* Lisage klassile ka failinime moodustamise funktsioon. Sellele on ilmselt mõistlik saata failinime eesliide (meil "vp_").
+* Täiendage klassi nii, et kui pilt on suuruse muutmise piirist väiksem, siis tehtaks klassi objekt myNewImage lihtsalt sama suur, kui originaalpilt. Kõige lihtsa on ajutisest failist uus objekt luua. Siis ei teki meil väikeste piltide puhul veateadet.
+
+Järgmise kahe ülesande puhul püüdke vähemalt üks teha!
+
+* Muutke suuruse muutmise funktsiooni (setPicSize) nii, et see vajadusel ka kärbiks pilti. Ehk siis vajadusel kopeeriks originaalist vaid osa, jätaks servad välja, teeks ruudukujulise vms. Selleks ilmselt on vaja funktsioonile lisaparameetreid määrata. Võib ka teisiti lahendada.
+*Täiendage vesimärgi lisamise funktsiooni nii, et saaks ette anda koha, kuhu see asetatakse (vasak ülal, parem ülal, parem all, vasak all, päris keskel ning saaks määrata ka soovitava kauguse servast (vertikaalne, horisontaalne, pragu panime mõlemad 10px).
+
+Muutke oma lehestiku avalehte (kus sisse logite).
+* Lisage kõige viimasena lisatud avaliku pildi (privacy == 1) näitamine.
