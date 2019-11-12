@@ -18,7 +18,9 @@
 	  }
 	  
 	  function __destruct(){
-		imagedestroy($this->myTempImage);
+		  if(isset($this->myTempImage)){
+			imagedestroy($this->myTempImage);
+		  }
 	  }
 	  
 	  private function checkImageForUpload(){
@@ -48,19 +50,19 @@
 		  
 		  //kui kõik sobib, teeme vajaliku pildiobjekti
 		  if($this->error == null){
-			  $this->myTempImage = $this->createImageFromFile($this->picToUpload["tmp_name"]);
+			  $this->myTempImage = $this->createImageFromFile($this->picToUpload["tmp_name"], $this->imageFileType);
 		  }
 		  
 	  }//checkImageForUpload lõpp
 	  
-	  private function createImageFromFile($imageFile){
-		if($this->imageFileType == "jpg" or $this->imageFileType == "jpeg"){
+	  private function createImageFromFile($imageFile, $fileType){
+		if($fileType == "jpg" or $fileType == "jpeg"){
 			$image = imagecreatefromjpeg($imageFile);
 		}
-		if($this->imageFileType == "png"){
+		if($fileType == "png"){
 			$image = imagecreatefrompng($imageFile);
 		}
-		if($this->imageFileType == "gif"){
+		if($fileType == "gif"){
 			$image = imagecreatefromgif($imageFile);
 		}
 		return $image;
@@ -91,12 +93,14 @@
 			$this->myNewImage = $this->setPicSize($this->myTempImage, $imageW, $imageH, $imageNewW, $imageNewH);
 		} else {
 			//kui pole piisavalt suur, et vähendada, teeme originaalsuuruses
-			$this->myNewImage = $this->createImageFromFile($this->picToUpload["tmp_name"]);
+			$this->myNewImage = $this->createImageFromFile($this->picToUpload["tmp_name"], $this->imageFileType);
 		}
 	  }//resizeImage lõppeb
 	  
 	  public function addWatermark($wmFile, $wmLocation, $fromEdge){
-		  $waterMark = imagecreatefrompng($wmFile);
+		  $wmFileType = strtolower(pathinfo($wmFile,PATHINFO_EXTENSION));
+		  //$waterMark = imagecreatefrompng($wmFile);
+		  $waterMark = $this->createImageFromFile($wmFile, $wmFileType);
 		  $waterMarkW = imagesx($waterMark);
 		  $waterMarkH = imagesy($waterMark);
 		  if($wmLocation == 1 or $wmLocation == 4){

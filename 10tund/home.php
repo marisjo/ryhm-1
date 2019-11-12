@@ -31,6 +31,7 @@
 	<li><a href="messages.php">Sõnumid</a></li>
 	<li><a href="showfilminfo.php">Filmid</a></li>
 	<li><a href="picupload.php">Piltide üleslaadimine</a></li>
+	<li><a href="gallery.php">Pildigalerii</a></li>
   </ul>
   
 </body>
