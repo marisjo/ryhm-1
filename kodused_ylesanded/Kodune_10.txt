@@ -1,0 +1,13 @@
+Viimasel hetkel välja pandud aga tunnis ju siiski räägitud ...
+
+1) täiendada pildigalerii lehte nii, et kasutaja saaks valida, kas näidatakse avalikke pilte (privacy 1 ja 2) või privaatseid, iskiklikke pilte (privacy 3). Selleks ilmselt mõistlik lehele vastavad lingid lisada, kus ka see valik GET meetodil ette antakse.
+NB! Näidatava galerii lehe (page) väärtus tuleb ka ette anda!
+
+URL-i lõpus seega: ?parameeter1=väärtus1&parameeter2=vöörtus2
+
+Kes soovib, annab ette ka piltide sorteerimisjärjekorra (vaikimisi on uusimad ees).
+
+2) Lisada üks uus leht, kus sisseloginud kasutaja saab laadida üles fotosid, mida näidatakse loosiga lehestiku avalehel (photos kataloog). Kasutada tuleb meie loodud piltide üleslaadimise klassi!
+
+NB! Pole vaja vesimärke ega andmebaasi kandmist!
+
